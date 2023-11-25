@@ -50,7 +50,7 @@ const Help = () => {
       </Portal>
 
       <View style={styles.container}>
-      <Button style={{marginTop: 30, backgroundColor:'#f0f0f0'}} onPress={showModal}>
+      <Button style={styles.createButton} onPress={showModal}>
         Заполнить анкету безопасности
       </Button>
       {notes.map((note,index)=>(
@@ -78,7 +78,8 @@ const styles = StyleSheet.create({
     borderColor:'grey',
     borderWidth:1,
     paddingHorizontal:10,
-    marginVertical:10
+    marginVertical:10,
+    backgroundColor: 'white',
   },
   noteContainer:{
     flexDirection:'row',
@@ -91,5 +92,11 @@ const styles = StyleSheet.create({
     margin: 'auto',
     justifyContent: 'center',
     alignItems: 'center',
-  }
+  },
+  createButton: {
+    marginTop: 30,
+    backgroundColor:'rgba(159, 52,53)',
+    padding: 10,
+    color: 'white'
+}
 });

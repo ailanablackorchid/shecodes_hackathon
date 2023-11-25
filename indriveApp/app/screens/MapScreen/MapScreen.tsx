@@ -38,6 +38,7 @@ const styles = StyleSheet.create({
     margin: 4,
     padding: 4,
     background: 'url("../../assets/gradient.png")',
+    backgroundColor: 'white',
   },
   text: {
     color: 'white',
