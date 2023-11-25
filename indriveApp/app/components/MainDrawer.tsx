@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import Help from '../screens/HelpScreen/HelpScreen';
 import Map from '../screens/MapScreen/MapScreen';
+import Stories from '../screens/StoriesScreen/StoriesScreen';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { View } from 'react-native'; 
 const Drawer = createDrawerNavigator();
@@ -17,7 +18,7 @@ const MapIcon =({focused, color, size}: any) => <Ionicons focused={focused} name
 const MainDrawer = () => {
   return (
     <NavigationContainer>
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
+    <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="MainScreen">
       <Stack.Screen name="MainDashboard">
         {() => (
           <Drawer.Navigator 
@@ -28,8 +29,9 @@ const MainDrawer = () => {
             }
           }}
           >
-            <Drawer.Screen name="Map" component={Map} options={{ drawerIcon: MapIcon }} />
+            <Drawer.Screen name="MainScreen" component={Map} options={{ drawerIcon: MapIcon }} />
             <Drawer.Screen name="Help" component={Help} options={{ drawerIcon: HelpdIcon }} />
+            <Drawer.Screen name="Stories" component={Stories} />
           </Drawer.Navigator>
         )}
       </Stack.Screen>
