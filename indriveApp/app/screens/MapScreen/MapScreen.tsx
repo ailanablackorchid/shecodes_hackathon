@@ -4,59 +4,23 @@ import { StyleSheet, Text, View, ImageBackground } from 'react-native';
 import { Modal, Portal, Button, PaperProvider, TextInput } from 'react-native-paper';
 const  Map = ({navigation}: any) => {
 
-  const [visible, setVisible] = React.useState(false);
-  const [note, setNote] = useState('');
-  const [notes, setNotes] = useState([]);
-
-  const showModal = () => setVisible(true);
-  const hideModal = () => setVisible(false);
-  const containerStyle = {backgroundColor: 'white', padding: 20,margin:10};
-  // const navigation = useNavigation(); 
-
   return (
     <PaperProvider>
         <View style={styles.container}>
           <ImageBackground source={require('../../assets/map.png')} resizeMode="cover" style={styles.image}>
             <View style={styles.innerContainer}>
-              <Text style={styles.text}>Inside</Text>
-              <Button onPress={() => navigation.navigate("Stories")}>Text</Button>
+              <Button
+                style={styles.button}
+                onPress={() => navigation.navigate('Stories', {
+                  screen: 'Stories'
+                  })}>
+                    Узнать больше о Безопасной поездке
+              </Button>
               <View style={styles.emptyBlock} />
             </View>
           </ImageBackground>
         </View>
-      {/* <Portal>
-        <Modal visible={visible} onDismiss={hideModal} contentContainerStyle={containerStyle}>
-          <Text>Add Your Notes</Text>
-          <TextInput 
-            value={note}
-            onChangeText={setNote}
-            placeholder='Enter Your Notes...'
-            style={styles.textInpput}
-          />
-        <View style={{width:150}}>
-          <Button mode="contained" onPress={() => {}}>
-            Add Node
-          </Button>
-        </View>
-        </Modal>
-      </Portal>
-
-      <View style={styles.container}>
-      <Button style={{marginTop: 30, backgroundColor:'#f0f0f0'}} onPress={showModal}>
-        ADD Notes
-      </Button>
-      {notes.map((note,index)=>(
-        <View key={index} style={styles.noteContainer}>
-            <Text style={{borderLeftColor:"blue", borderLeftWidth:2, color:"black",padding:10,borderRadius:10}}>{note}</Text>
-       
-          <Button onPress={() => {}}>
-              Delete
-          </Button>
-        </View>  
-      ))}
-      </View> */}
-      
-    </PaperProvider>
+  </PaperProvider>
   )
 }
 
@@ -69,6 +33,11 @@ const styles = StyleSheet.create({
   },
   image: {
     flex: 1,
+  },
+  button: {
+    margin: 4,
+    padding: 4,
+    background: 'url("../../assets/gradient.png")',
   },
   text: {
     color: 'white',

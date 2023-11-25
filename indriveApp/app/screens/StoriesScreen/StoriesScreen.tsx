@@ -1,75 +1,39 @@
 import React, { useState } from 'react'
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
 import { Modal, Portal, Button, PaperProvider, TextInput } from 'react-native-paper';
+import storiesArray from '../../api/stories';
+
 const Stories = ({navigation}: any) => {
-
-  const [visible, setVisible] = React.useState(false);
-  const [note, setNote] = useState('');
-  const [notes, setNotes] = useState([]);
-
-
-  const showModal = () => setVisible(true);
-  const hideModal = () => setVisible(false);
-  const containerStyle = {backgroundColor: 'white', padding: 20,margin:10};
+    const [content, setContent] = useState(storiesArray);
 
   return (
-    <PaperProvider>
-      <Portal>
-        <Modal visible={visible} onDismiss={hideModal} contentContainerStyle={containerStyle}>
-          <Text>Add Your Notes</Text>
-          <TextInput 
-            value={note}
-            onChangeText={setNote}
-            placeholder='Enter Your Notes...'
-            style={styles.textInpput}
-          />
-        <View style={{width:150}}>
-          <Button mode="contained" onPress={() => {}}>
-            Add Node
-          </Button>
-        </View>
-        </Modal>
-      </Portal>
-
-      <View style={styles.container}>
-      <Button style={{marginTop: 30, backgroundColor:'#f0f0f0'}} onPress={showModal}>
-        ADD Notes
-      </Button>
-      {notes.map((note,index)=>(
-        <View key={index} style={styles.noteContainer}>
-            <Text style={{borderLeftColor:"blue", borderLeftWidth:2, color:"black",padding:10,borderRadius:10}}>{note}</Text>
-       
-          <Button onPress={() => {}}>
-              Delete
-          </Button>
-        </View>  
-      ))}
-      </View>
-      
-    </PaperProvider>
-  )
-}
+    <View style={styles.container}>
+        <Button
+            onPress={() => navigation.navigate('MainScreen', {
+                  screen: 'Map'
+            })}
+            style={styles.buttonClose}
+        >x</Button>
+        <Image source={content[0].content} style={styles.story}/>
+    </View>
+  );}
 
 export default Stories;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: 'white',
 
   },
-  textInpput:{
-    height:40,
-    borderColor:'grey',
-    borderWidth:1,
-    paddingHorizontal:10,
-    marginVertical:10
+  story: {
+    flex: 1,
+    resizeMode: "cover",
   },
-  noteContainer:{
-flexDirection:'row',
-alignItems:'center',
-justifyContent:'space-between',
-margin:10,
-padding:10
+  buttonClose: {
+    position: 'absolute',
+    top: 20,
+    left: 20,
+    color: 'red',
   }
 });

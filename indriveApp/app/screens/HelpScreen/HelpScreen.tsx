@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
 import { Modal, Portal, Button, PaperProvider, TextInput } from 'react-native-paper';
 const Help = () => {
 
@@ -16,16 +16,34 @@ const Help = () => {
     <PaperProvider>
       <Portal>
         <Modal visible={visible} onDismiss={hideModal} contentContainerStyle={containerStyle}>
-          <Text>Add Your Notes</Text>
+          <Text>При вызове безопасности, ваша поездка, местоположение и инфо будут отправлены выбранному контакту</Text>
           <TextInput 
             value={note}
             onChangeText={setNote}
-            placeholder='Enter Your Notes...'
+            placeholder='Ваше ФИО*'
+            style={styles.textInpput}
+          />
+          <TextInput 
+            value={note}
+            onChangeText={setNote}
+            placeholder='Экстренный контакт *'
+            style={styles.textInpput}
+          />
+          <TextInput 
+            value={note}
+            onChangeText={setNote}
+            placeholder='Домашний адрес *'
+            style={styles.textInpput}
+          />
+          <TextInput 
+            value={note}
+            onChangeText={setNote}
+            placeholder='Ваше ФИО*'
             style={styles.textInpput}
           />
         <View style={{width:150}}>
           <Button mode="contained" onPress={() => {}}>
-            Add Node
+            Сохранить
           </Button>
         </View>
         </Modal>
@@ -33,17 +51,14 @@ const Help = () => {
 
       <View style={styles.container}>
       <Button style={{marginTop: 30, backgroundColor:'#f0f0f0'}} onPress={showModal}>
-        ADD Notes
+        Заполнить анкету безопасности
       </Button>
       {notes.map((note,index)=>(
         <View key={index} style={styles.noteContainer}>
             <Text style={{borderLeftColor:"blue", borderLeftWidth:2, color:"black",padding:10,borderRadius:10}}>{note}</Text>
-       
-          <Button onPress={() => {}}>
-              Delete
-          </Button>
         </View>  
       ))}
+      <Image source={require('../../assets/buttons.png')} style={styles.buttons}/>
       </View>
       
     </PaperProvider>
@@ -66,10 +81,15 @@ const styles = StyleSheet.create({
     marginVertical:10
   },
   noteContainer:{
-flexDirection:'row',
-alignItems:'center',
-justifyContent:'space-between',
-margin:10,
-padding:10
+    flexDirection:'row',
+    alignItems:'center',
+    justifyContent:'space-between',
+    margin:10,
+    padding:10
+  },
+  buttons: {
+    margin: 'auto',
+    justifyContent: 'center',
+    alignItems: 'center',
   }
 });

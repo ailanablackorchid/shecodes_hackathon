@@ -24,17 +24,17 @@ const MainDrawer = () => {
           <Drawer.Navigator 
           screenOptions={{
             drawerStyle:{
-              backgroundColor:'yellow',   //change bg color
+              backgroundColor:'white',   //change bg color
               width:230    //change width of sidebar 
             }
           }}
           >
             <Drawer.Screen name="MainScreen" component={Map} options={{ drawerIcon: MapIcon }} />
             <Drawer.Screen name="Help" component={Help} options={{ drawerIcon: HelpdIcon }} />
-            <Drawer.Screen name="Stories" component={Stories} />
           </Drawer.Navigator>
         )}
       </Stack.Screen>
+      <Stack.Screen name="Stories" component={Stories} />
     </Stack.Navigator>
   </NavigationContainer>
   );
